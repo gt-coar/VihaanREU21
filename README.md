@@ -14,26 +14,6 @@ use the command below.
 
 ```conda activate rl```
 
-## Directory Structure - 
-Each project directory has four classes of files.\
-
-1) **Base Files** - (Agents.py, QNetworks.py and ReplayBuffer.py)\
-These files have all the variations in them. QNetworks.py contains the neural networks used as QNetworks and ReplayBufer.py contains all possible variations in the Replay Buffer. These files are different for different experiments
-as the variations needed for each experiment is different. You wouldn't have to run any of these files for performing the experiment. You can add more variations in here. 
-
-2) **Variation Files** - (DQN_<gym_env>_<experiment_type><variation_number>_Python.py)\
-These files use the functions defined in the base files. Each of these files represent a variation. For getting the result of an experiment, one needs to run these files. 
-For running the file, use the following command after activating the conda environment,
-```python3 DQN_<gym_env>_<experiment_type>....(File name).py```
-Running these files save the variables in Data files (Next type of file).\
-
-3) **Data Files** - (Data_<gym_env>_<experiment_type>)\
-Running the Variation Files above, store the variables generated during the program (Variables = Lives, Scores in each episode until the agent learns the episode, time taken for the agent to learn). These data files can also be found in the 'DQN_Data' directory all put together to visualise and analyse the data. 
-
-4) **PBS Files** - (corresponding_variation_file_name.PBS)\
-PACE cluster-(Georgia Tech) was extensively used for the computing of all these experiments. For running a certain code on their servers, one has to create a PBS file corresponding to the python files one wish to run. The corresponding PBS file for every variation file is also added to the directories. Please refer to the official documentation - https://pace.gatech.edu/ to assist you in setting up and getting started. To run the code once all the setting up is done, use the following command on the terminal to submit your job to the cluster.
-``` qsub <pace_file_name>.PBS``` 
-
 ## Project Structure -
 There are 3 different experiments conducted. Each of these are organised into the respective directories.
 Please read the report to understand the experiments in detail.
@@ -54,7 +34,27 @@ Although the results are only present for Acrobot Environment, the code for all 
 This experiment has 4 variations. Different levels of truncation on the gradient generated for updating the main QNetwork was experimented with(T1 = ±1, T2 = ±5, T3 = ±10, T4 = ±20)\
 Although the results are only present for Acrobot Environment, the code for all the environments is available in the directory for conducting similar experiments.
 
-## Results
+## Directory Structure - 
+Each project directory has four classes of files.\
+
+1) **Base Files** - (Agents.py, QNetworks.py and ReplayBuffer.py)\
+These files have all the variations in them. QNetworks.py contains the neural networks used as QNetworks and ReplayBufer.py contains all possible variations in the Replay Buffer. These files are different for different experiments
+as the variations needed for each experiment is different. You wouldn't have to run any of these files for performing the experiment. You can add more variations in here. 
+
+2) **Variation Files** - (DQN_<gym_env>_<experiment_type><variation_number>_Python.py)\
+These files use the functions defined in the base files. Each of these files represent a variation. For getting the result of an experiment, one needs to run these files. 
+For running the file, use the following command after activating the conda environment,
+```python3 DQN_<gym_env>_<experiment_type>....(File name).py```
+Running these files save the variables in Data files (Next type of file).\
+
+3) **Data Files** - (Data_<gym_env>_<experiment_type>)\
+Running the Variation Files above, store the variables generated during the program (Variables = Lives, Scores in each episode until the agent learns the episode, time taken for the agent to learn). These data files can also be found in the 'DQN_Data' directory all put together to visualise and analyse the data. 
+
+4) **PBS Files** - (corresponding_variation_file_name.PBS)\
+PACE cluster-(Georgia Tech) was extensively used for the computing of all these experiments. For running a certain code on their servers, one has to create a PBS file corresponding to the python files one wish to run. The corresponding PBS file for every variation file is also added to the directories. Please refer to the official documentation - https://pace.gatech.edu/ to assist you in setting up and getting started. To run the code once all the setting up is done, use the following command on the terminal to submit your job to the cluster.
+``` qsub <pace_file_name>.PBS``` 
+
+## Visualizing Results
 The data generated from the experiments mentioned above is stored in the folder called **Data_DQN**.\
 Each of the above experiments have their own dedicated folder. Each folder has a seperate Jupyter Notebook for visualising the files.\
 Hickle was used to store the python variables and reading them. Please refer to the official documentation to follow through the code used in this project to store and load files using hickle from here - https://pypi.org/project/hickle/.
